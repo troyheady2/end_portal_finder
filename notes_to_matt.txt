@@ -1,0 +1,101 @@
+I hope this letter finds you well.
+ 
+I love your channel and look forward to all you YouTube videos.
+ 
+This weekend I took on finding the end portal Stronghold in Minecraft
+ 
+There are many websites that will do this for you, but I thought it would be an interesting math challenge. (geometry / trig / linear algebra / matrix math  Hits all the sweet spots)
+ 
+One of the oddities that made this tougher for me is that Minecraft does not use a standard Cartesian coordinate system.
+                                https://minecraft.fandom.com/wiki/Coordinates
+ 
+to summarize: In mine craft:
+                North    is – Z      (all of these can be +/- and from zero or under a million…. I think)
+                South    is + Z
+                East        is + X
+                West      is – X
+               
+                (not useful for our discussion today)
+                Up          is + Y
+                Down    is – Y  (. 1 is the lowest possibly value)
+ 
+                Your heading is measures in degrees with 0 being due South.
+                Degree increase positively in a clockwise direction, so
+                South = 0 degrees
+                West = 90 degrees
+                North = +/-  180 degrees
+                East – 270 degrees or -90 degrees
+ 
+Took me a while to figure out what that meant to standard trig. 😉
+ 
+The technique described to find the (closest) end portal.
+                                https://minecraft.fandom.com/wiki/Eye_of_Ender#Locating_strongholds
+
+            Throw an Eye of Ender into the air.
+            It will head towards the portal no matter where you are
+            Mark down your location data. And heading  (F3 for data page)
+ 
+            Go 500 to 1000 blocks in x or z direction
+            I like to pick a direction that is an axis of the quadrant my initial direction was in.  (better triangle?)
+            Repeat Eye of ender again
+            and get your second point
+ 
+Now with the data, comes the math(s)         
+ 
+            I was shocked that I never learned that
+                        Tangent (in radians) =  Slope
+ 
+            That seems like an important connection between different maths
+ 
+            For Minecraft tangent looks a little different.
+            If I am doing it right
+                        Minecaft Z become standard x and Mincraft X becomes negative  y
+ 
+            Tan(theta) =  -X / Z
+ 
+            So solution should look like
+ 
+            Convert each point and direction to a line ( y=mx+b,  or  x=mz+b in our case)
+            M1 = - tan(Theta1)
+            B1 = X1 – M1*Z1
+ 
+            (repeat for other points)
+ 
+            Solve system of equations for pairs of lines
+ 
+            I think I did this right.. had a sign issue, but think it is corrected (I swapped the denomerator).
+ 
+            X = (B1*M2 – B2*M1) / (M2 – M1)
+            Z=(B1-B2) / (M2-M1)
+              
+ 
+            Go to the spot in the world. And deep straight down (never recommended…lol).   https://www.youtube.com/watch?v=WCsZzaFTGQ0
+            If you find a brick / man-made structure you did it right.
+ 
+ 
+Of course once you have an algorithm, you need to write a program. 😉
+            Attached:  end_portal_finder.py.txt
+ 
+Improvements:
+Use (the) matrix
+The coordinate transformation feels like I should have been able to do it with matrix (multiplication?)
+my matrix math is a little weak….
+I remember way back in college doing some similar with robot joints (kinematics?) to change the frame of refence of the joint from local to global coords.
+But I would love to see how this could be applied here.
+ 
+Measuring accuracy
+            Also there is something about the angles and distance between the points that could be used as a confidence / accuracy measurement
+ 
+            I mean if I only go 15 blocks away from the first point and get a similar angle (Minecraft only gives one decimal place for degree measure)
+            This would be a lot less accurate than going hundred of blocks away and creating a triangle that is not tilted over (not sure the math term, center that is outside is base line?)
+ 
+            Writing this out… I am thinking the accuracy is somehow related to the size of the angle at the End portal vertex. Feels like there is a sweet spot… not too large / not too small.
+           
+ 
+Well enough rambling…..
+ 
+I just thought I would share with a fellow math head
+ 
+Thank you again for all you do and your great YouTube content
+ 
+ 
